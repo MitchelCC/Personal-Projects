@@ -1,7 +1,7 @@
 import pandas as pd
 
 print("Fanasty value will be decided by standard fantasy scoring metrics. Rebounds & Points = 1 fantasy pt, Assists = 1.5 pts, Steals & Blocks = 3 pts, & turnovers = -1 pts. ")
-df = pd.read_csv(r"C:\Users\mitch\OneDrive\Documents\GitHub\Personal-Projects\NBA Fantasy\Player_Totals.csv", index_col = 0)
+df = pd.read_csv(r"C:\Users\mitch\OneDrive\Desktop\Personal-Projects\NBA Fantasy\Player_Totals.csv", index_col = 0)
 del df['birth_year']
 #using stats from 2020 szn and later bc we know that basketball isn't a linear game and players can get better or worse with age
 #we want the most recent data to get the most relevant results and predictions.
