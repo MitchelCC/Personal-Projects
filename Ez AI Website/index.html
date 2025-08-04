@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ez AI Agency</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/xlsx.full.min.js"></script> <!-- Added SheetJS CDN -->
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/javascript">
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+
+    function filledCell(cell) {
+      return cell !== '' && cell != null;
+    }
+
+    function loadFileData(filename) {
+      if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+        try {
+          var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+          var firstSheetName = workbook.SheetNames[0];
+          var worksheet = workbook.Sheets[firstSheetName];
+
+          // Convert sheet to JSON to filter blank rows
+          var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+          // Filter out blank rows (rows where all cells are empty, null, or undefined)
+          var filteredData = jsonData.filter(row => row.some(filledCell));
+
+          // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+          var headerRowIndex = filteredData.findIndex((row, index) =>
+            row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+          );
+          // Fallback
+          if (headerRowIndex === -1 || headerRowIndex > 25) {
+            headerRowIndex = 0;
+          }
+
+          // Convert filtered JSON back to CSV
+          var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+          csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+          return csv;
+        } catch (e) {
+          console.error(e);
+          return "";
+        }
+      }
+      return gk_fileData[filename] || "";
+    }
+  </script>
+  <script type="text/babel">
+    function NavBar() {
+      return (
+        <nav className="bg-black text-white p-4 fixed w-full top-0 z-10 flex justify-between items-center">
+          <img src="ez.png" alt="Ez AI Automation Logo" className="h-12 rounded-full object-cover" style={{ borderRadius: '50%' }} />
+          <div className="flex space-x-4">
+            <a href="#home" className="hover:text-blue-600">Home</a>
+            <a href="#capabilities" className="hover:text-blue-600">Capabilities</a>
+            <a href="#about" className="hover:text-blue-600">About Us</a>
+            <a href="#contact" className="hover:text-blue-600">Contact</a>
+            <a href="tel:+18081231234" className="hover:text-blue-600">(___) ___</a>
+          </div>
+        </nav>
+      );
+    }
+
+    function Hero() {
+      return (
+        <section id="home" className="bg-white h-screen flex items-center justify-center">
+          <div className="container mx-auto text-center px-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Transform Your Business with Ez AI Automations</h2>
+            <p className="text-lg md:text-xl text-black mb-6">We provide AI agents tailored to your business! Automating your administrative tasks with ease, and boosting productivity instantly.</p>
+            <a href="#contact" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Get Started</a>
+          </div>
+        </section>
+      );
+    }
+
+    function Capabilities() {
+      const capabilities = [
+        { title: "Answer Phone Calls", description: "Our AI agents handle incoming calls professionally, providing prompt responses to customer inquiries." },
+        { title: "Appointment Scheduling", description: "Automate scheduling and modifying appointments, syncing seamlessly with your calendar." },
+        { title: "Invoice Management", description: "Generate and send invoices automatically, streamlining your billing process." },
+        { title: "Call Summarization", description: "Receive concise summaries of phone calls to stay informed without listening to every detail." },
+        { title: "FAQ Handling", description: "Answer common customer questions instantly, improving response times and customer satisfaction." },
+        { title: "Operates 24/7", description: "Our agents run 24/7, meaning you don't ever lose out on potential customers just because there's no one there to answer the phone." },
+      ];
+
+      return (
+        <section id="capabilities" className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-8">AI Agent Capabilities</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {capabilities.map((cap, index) => (
+                <div key={index} className="p-6 bg-blue-100 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold text-black mb-2">{cap.title}</h3>
+                  <p className="text-black">{cap.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function About() {
+      return (
+        <section id="about" className="py-16 bg-blue-100">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-8">About Ez AI Agency</h2>
+            <p className="text-lg text-black max-w-3xl mx-auto">
+              Ez AI Agency specializes in delivering cutting-edge AI solutions for small to medium-sized businesses in industries like plumbing, dental, and real estate. Our mission is to simplify your operations by automating repetitive administrative tasks, allowing you to focus on growing your business. With our tailored AI agents, we ensure seamless integration and exceptional efficiency.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function Contact() {
+      const [status, setStatus] = React.useState('');
+
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        setStatus('Sending...');
+
+        emailjs.send("service_zmo85b4", "template_z52x9if", {
+          from_name: event.target.name.value,
+          from_email: event.target.email.value,
+          message: event.target.message.value
+        }, "P7AsNQFdGQ2HHw81f")
+        .then((response) => {
+          setStatus("Message sent successfully!");
+          event.target.reset();
+        }, (error) => {
+          setStatus("Failed to send message. Please try again.");
+          console.error('EmailJS error:', error);
+        });
+      };
+
+      return (
+        <section id="contact" className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-8">Contact Us</h2>
+            <div className="max-w-lg mx-auto">
+              <p className="text-lg text-black mb-4">Ready to revolutionize your business with AI? Reach out to us!</p>
+              <p className="text-lg text-black mb-4"><strong>Email:</strong> Automate@EzAIhnl.com</p>
+              <p className="text-lg text-black mb-4"><strong>Phone:</strong> (808) 349-6668</p>
+              <div className="mt-6">
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                    className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    required
+                  />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email"
+                    className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    required
+                  />
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Describe your business and the service you're looking for."
+                    className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    rows="5"
+                    required
+                  ></textarea>
+                  <button type="submit" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 w-full">
+                    Send Message
+                  </button>
+                </form>
+                {status && <p className="text-lg text-black mt-4">{status}</p>}
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function LiveDemo() {
+      return (
+        <section id="live-demo" className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-8">Live Demonstration</h2>
+            <p className="text-lg text-black mb-4 text-center">Experience our AI solutions in action! Call us at (__) ___-___ and watch our AI go to work!
+            For your privacy and safety, please use fake information when talking to our agent.</p>
+            <div className="w-full max-w-4xl mx-auto">
+              <iframe
+                src="https://docs.google.com/spreadsheets/d/1epmcvWbAz40KGMjYgcwtPZMQCglnj3c7fbhtYjTJ7Vs/edit?usp=sharing"
+                width="100%"
+                height="600"
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <NavBar />
+          <Hero />
+          <Capabilities />
+          <About />
+          <LiveDemo />
+          <Contact />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
