@@ -1,0 +1,69 @@
+Logs for your project will appear below. Press Ctrl+C to exit.
+λ Bundling failed 15194ms node_modules/expo-router/node/render.js (913 modules)
+
+Metro error: SyntaxError: /home/runner/workspace/app/(tabs)/index.tsx: Unexpected token (18:53)
+
+  16 | export default function HomeScreen() {
+  17 |   const [modalVisible, setModalVisible] = useState(false);
+> 18 |   const [catches, setCatches] = useState<RecentCatch[]>([
+     |                                                      ^
+  19 |     {
+  20 |       id: '1',
+  21 |       name: 'Big Yellow',
+
+  16 | export default function HomeScreen() {
+  17 |   const [modalVisible, setModalVisible] = useState(false);
+> 18 |   const [catches, setCatches] = useState<RecentCatch[]>([
+     |                                                      ^
+  19 |     {
+  20 |       id: '1',
+  21 |       name: 'Big Yellow',
+
+Call Stack
+  <unknown> (app/(tabs)/index.tsx:18:54)
+Web node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 95.5% (912/933)
+Error: Premature close
+    at onclose (node:internal/streams/end-of-stream:159:30)
+Web Bundling failed 15442ms node_modules/expo-router/entry.js (961 modules)
+λ Bundling failed 1193ms node_modules/expo-router/node/render.js (870 modules)
+Web Bundling failed 1204ms node_modules/expo-router/entry.js (864 modules)
+
+Metro error: SyntaxError: /home/runner/workspace/app/(tabs)/index.tsx: Unexpected token (18:53)
+
+  16 | export default function HomeScreen() {
+  17 |   const [modalVisible, setModalVisible] = useState(false);
+> 18 |   const [catches, setCatches] = useState<RecentCatch[]>([
+     |                                                      ^
+  19 |     {
+  20 |       id: '1',
+  21 |       name: 'Big Yellow',
+
+  16 | export default function HomeScreen() {
+  17 |   const [modalVisible, setModalVisible] = useState(false);
+> 18 |   const [catches, setCatches] = useState<RecentCatch[]>([
+     |                                                      ^
+  19 |     {
+  20 |       id: '1',
+  21 |       name: 'Big Yellow',
+
+Call Stack
+  <unknown> (app/(tabs)/index.tsx:18:54)
+λ Bundling failed 967ms node_modules/expo-router/node/render.js (510 modules)
+
+Metro error: SyntaxError: /home/runner/workspace/app/(tabs)/index.tsx: Unexpected token (18:53)
+
+  16 | export default function HomeScreen() {
+  17 |   const [modalVisible, setModalVisible] = useState(false);
+> 18 |   const [catches, setCatches] = useState<RecentCatch[]>([
+     |                                                      ^
+  19 |     {
+  20 |       id: '1',
+  21 |       name: 'Big Yellow',
+
+  16 | export default function HomeScreen() {
+  17 |   const [modalVisible, setModalVisible] = useState(false);
+> 18 |   const [catches, setCatches] = useState<RecentCatch[]>([
+     |                                                      ^
+  19 |     {
+  20 |       id: '1',
+  21 |       name: 'Big Yellow',

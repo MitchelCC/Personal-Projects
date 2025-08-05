@@ -1,0 +1,43 @@
+Web Bundling failed 139ms node_modules/expo-router/entry.js (1 module)
+
+Metro error: Unable to resolve module @/assets/images/BI-map.png from /home/runner/workspace/app/(tabs)/index.tsx: @/assets/images/BI-map.png could not be found within the project or in these directories:
+  node_modules
+  53 |     { id: 'oahu', name: 'Oahu', image: require('@/assets/images/oahu-map.jpg') },
+  54 |     { id: 'maui', name: 'Maui', image: require('@/assets/images/maui-map.webp') },
+> 55 |     { id: 'big-island', name: 'Big Island', image: require('@/assets/images/BI-map.png') },
+     |                                                             ^
+  56 |     { id: 'kauai', name: 'Kauai', image: require('@/assets/images/react-logo.png') },
+  57 |     { id: 'molokai', name: 'Molokai', image: require('@/assets/images/react-logo.png') },
+  58 |     { id: 'lanai', name: 'Lanai', image: require('@/assets/images/react-logo.png') }
+
+  1 |
+  2 | import React, { useState } from 'react';
+  3 | import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Alert, Modal, Dimensions, GestureResponderEvent } from 'react-native';
+
+Call Stack
+  <unknown> (app/(tabs)/index.tsx:0)
+λ Bundling failed 265ms node_modules/expo-router/node/render.js (1 module)
+Web Bundled 347ms node_modules/expo-router/_error.js (288 modules)
+λ Bundled 272ms node_modules/expo-router/node/render.js (1 module)
+Web node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ  WARN  "shadow*" style props are deprecated. Use "boxShadow". 
+λ  WARN  "textShadow*" style props are deprecated. Use "textShadow". 
+  factory (app/(tabs)/index.tsx:547:27)
+Web Bundled 814ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 180ms node_modules/expo-router/entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Unable to resolve "@/assets/images/react-logo.webp" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/react-logo.webp" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/kaui-ma.webp" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/kaui-ma.webp" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/react-logo.webp" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/react-logo.webp" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/react-logo.jpg" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/react-logo.jpg" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/la.jpg" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/la.jpg" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/lanai-ma.jpg" from "app/(tabs)/index.tsx"
+Unable to resolve "@/assets/images/lanai-ma.jpg" from "app/(tabs)/index.tsx"
+iOS Bundled 374ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 96ms node_modules/expo-router/entry.js (1 module)
+iOS Bundled 79ms node_modules/expo-router/entry.js (1 module)

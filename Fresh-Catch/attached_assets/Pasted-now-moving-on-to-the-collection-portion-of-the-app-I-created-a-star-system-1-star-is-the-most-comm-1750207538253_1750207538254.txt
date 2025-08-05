@@ -1,0 +1,59 @@
+now moving on to the collection portion of the app. I created a star system (1 star is the most common and easiest fish to catch and 5 being the monster fishes like sharks and 100+lbs uluas) with the catchable fish found in hawaii. Add these fish to the app, make them "unlockable" and make sure to add the corresponding xp value to them. Dont forget the game aspect of the app. heres my rating system: ⭐ 1‑Star (Very Common, Shore Abundant)
+Abundant in surveys, very easy for beginners
+
+10 XP: ʻĀholehole (flagtail), Akule (bigeye scad), ʻAmaʻama (striped mullet), Awa (milkfish), Kala (unicornfish), Kole (yellow­eyed surgeonfish), Manini (convict tang), Nehu (anchovy), Weke/ʻOama (goatfish)
+*(Millions observed in reef surveys, e.g., yellow tangs and kole are >2 M each in West Hawai‘i)
+seagrant.soest.hawaii.edu
++2
+dlnr.hawaii.gov
++2
+en.wikipedia.org
++2
+dlnr.hawaii.gov
++1
+dlnr.hawaii.gov
++1
+
+⭐⭐ 2‑Star (Common & Moderate)
+Common but require skill or variety of tactics
+
+20 XP: Kūmū (goatfish), ʻŌ‘io (bonefish), ʻŌpelu (mackerel scad)
+
+25 XP: Moano / Munu (goatfish varieties), Uku (Hawaiian grouper) — still abundant but less frequently caught than 1-star species
+
+⭐⭐⭐ 3‑Star (Stronger Fight, Mid‑Rarity)
+Not rare, but offer notably stronger fight or less consistent catch rates
+
+40 XP: Papio/Ulua (10–20 lbs) — common shore-game fish, strong fight
+reddit.com
++2
+ucolick.org
++2
+ulua.com
++2
+
+45 XP: Uhu (parrotfish), Aweoweo (bigeye fish), Humuhumu (triggerfish), Aha (needlefish), Aku (skipjack tuna)
+
+50 XP: Ahi (yellowfin tuna), Kaku (barracuda), Kawakawa (wahoo) — prized shore or nearshore trophies, moderate rarity
+
+⭐⭐⭐⭐ 4‑Star (Rare or Big‑Fighters)
+Challenging; require strong tackle and select locations
+
+80 XP: Large Ulua (20–50 lbs), Island Trevally, Kahala (amberjack), Mid‑size sharks (juvenile tiger/blacktip)
+
+90 XP: Deep‑7 bottomfish – ʻŌpakapaka, Ehu, Gindai, Kalekale, Lehi, Onaga, Hāpūʻupuʻu — rare from shore but extremely valued
+en.wikipedia.org
++2
+en.wikipedia.org
++2
+fisheries.noaa.gov
++2
+
+⭐⭐⭐⭐⭐ 5‑Star (Elite Rarity / Legendary Catch)
+Shore‑only hunting trophies; extremely rare and prestigious
+
+150 XP: Trophy GT Ulua (>80 lbs)
+
+175 XP: Adult sharks (tiger, hammerhead, mako) — massive fighters
+
+200 XP: Sailfish, Marlin — virtually never caught from land; ceremonial prize
